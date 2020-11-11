@@ -1,7 +1,8 @@
 from django.db import models
+from django.forms import ModelForm
 from directorio.models import Tienda
 
-# Create your models here.
+# Models.
 class Producto(models.Model):
 	codigo = models.CharField(max_length = 12, primary_key = True, default = '')
 	nombre = models.CharField(max_length = 30, default='')
@@ -16,5 +17,13 @@ class Inventario(models.Model):
 	cantidad = models.IntegerField(default = 0)
 
 
+#FormModels
+class ProductoForm(ModelForm):
+	class Meta:
+		model = Producto
+		fields = '__all__'
 
-
+class InventarioForm(ModelForm):
+	class Meta:
+		model = Inventario
+		fields = '__all__'

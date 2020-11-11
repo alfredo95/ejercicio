@@ -23,7 +23,10 @@
   <main class="">
   	
   	<nav class="indigo darken-2" role="navigation">
-	    <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo">Inventarios	</a>
+	    <div class="nav-wrapper container">
+
+	      <a id="logo-container" href="{% url 'index' %}" class="brand-logo">Inventarios</a>
+
 	      <ul class="right hide-on-med-and-down">
 	        <li><a href="{% url 'index' %}">Catalogo</a></li>
 	        <li><a href="#">Tiendas</a></li>
@@ -34,69 +37,47 @@
 	        <li><a href="#">Tiendas</a></li>
 	      </ul>
 	      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	    
 	    </div>
 	 </nav>
 
 	 <br>
 
-	 <!-- Lista de todos los productos -->
-	 {% if productos %}
-	 <div class="container">
-  	
-	  	<div class="section">
-	  		
-	  		<h5 class="center orange-text"><span>Lista de productos</span></h5>
-	  		<p class="center-align"><a href="{% url 'agregarProducto' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Añadir producto</a></p> 
-
-	  	</div> 	
-
-	 
-	    <div class="section white">
-
-			<table class="striped responsive">
-		        <thead>
-		          <tr>
-		              <th>Nombre</th>
-		              <th>Precio</th>
-		              <th>Codigo</th>
-		              <th>Accion</th>
-		          </tr>
-		        </thead>
-
-		        <tbody>
-		       	  
-		       	  {% for producto in productos %}
-		          <tr>
-		            <td> {{ producto.nombre }} </td>
-		            <td> {{ producto.precio }} </td>
-		            <td> {{ producto.codigo }} </td>
-		            <td> 
-		            	<a href="{% url 'index' %}"><i class="material-icons">edit</i></a>
-		            	<a href="{% url 'borrarProducto' id=producto.codigo %}"><i class="material-icons">delete</i></a>
-		            </td>
-		          </tr>
-		          {% endfor %}
-		       
-		        </tbody>
-		      </table>	     
-
-	    </div>
-	    <br><br>
-	 </div>
-	 {% else %}
+	 <!-- Formulario de nuevo producto -->
 
 	 <div class="container">
 	 	
 	 	<div class="section">
+	 		
+	 		<h5 class="center orange-text"><span>Agregar nuevo producto</span></h5>
+
+	 	</div>
+
+	 	<div class="section">
 	  		
-	  		<h5 class="center red-text"><span>No hay productos registrados</span></h5>
-	  		<p class="center-align"><a href="{% url 'agregarProducto' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Añadir producto</a></p> 
+	  		<div class="row">
+	  			
+	  			<div class="col s2"></div>
+
+	  			<form class="col s8 center-align" action="{% url 'agregarProducto' %}" method="post">
+
+				    {% csrf_token %}
+				    {{ form }}
+
+				    <br><br><br><br>
+				    <button class="btn waves-effect waves-light" type="submit" name="action">Agregar
+					    <i class="material-icons right">send</i>
+					</button>
+
+				</form>
+
+				<div class="col s2"></div>
+
+	  		</div>
 
 	  	</div> 
 
 	 </div>	
-
-	 {% endif %}
 
   </main>
 
@@ -116,7 +97,7 @@
   <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
   <script src="{% static 'js/materialize.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
-  <script src="{% static 'js/scripts.js' %}"></script>
+   <script src="{% static 'js/scripts.js' %}"></script>
 
   </body>
 </html>
