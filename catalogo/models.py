@@ -17,3 +17,4 @@ class Inventario(models.Model):
 
 
 
+

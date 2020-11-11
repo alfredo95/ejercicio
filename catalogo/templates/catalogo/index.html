@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <link rel="icon" type="image/png"  href="{% static 'django.png' %}">
+
+  <title>Ejercicio django</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/estilo.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  <header></header>
+
+  <main>
+  	
+  	<nav class="light-blue lighten-1" role="navigation">
+	    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Inventarios	</a>
+	      <ul class="right hide-on-med-and-down">
+	        <li><a href="#">Catalogo</a></li>
+	        <li><a href="#">Tiendas</a></li>
+	      </ul>
+
+	      <ul id="nav-mobile" class="sidenav">
+	        <li><a href="#">Catalogo</a></li>
+	        <li><a href="#">Tiendas</a></li>
+	      </ul>
+	      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	    </div>
+	 </nav>
+
+	 <br>
+	 <div class="container">
+  	
+	  	<h5 class="center"><span>Sipi</span></h5>  	
+
+	 </div>
+
+
+  	<div class="container">
+	    <div class="section">
+
+	     
+
+	    </div>
+	    <br><br>
+	</div>
+
+  </main>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Desarrollado por <a class="orange-text text-lighten-3" href="https://github.com/eduardoestr">Eduardo Flores</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script src="{% static 'js/init.js' %}"></script>
+
+  </body>
+</html>
