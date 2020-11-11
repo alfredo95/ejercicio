@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <link rel="icon" type="image/png"  href="{% static 'django.png' %}">
+  <link rel="icon" type="image/png"  href="{% static 'store.png' %}">
 
   <title>Ejercicio django</title>
 
@@ -20,9 +20,9 @@
 
   <header></header>
 
-  <main>
+  <main class="">
   	
-  	<nav class="light-blue lighten-1" role="navigation">
+  	<nav class="indigo darken-2" role="navigation">
 	    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Inventarios	</a>
 	      <ul class="right hide-on-med-and-down">
 	        <li><a href="#">Catalogo</a></li>
@@ -38,25 +38,67 @@
 	 </nav>
 
 	 <br>
+
+	 <!-- Lista de todos los productos -->
+	 {% if productos %}
 	 <div class="container">
   	
-	  	<h5 class="center"><span>Sipi</span></h5>  	
+	  	<div class="section">
+	  		
+	  		<h5 class="center orange-text text-lighten-1"><span>Lista de productos</span></h5> 
 
-	 </div>
+	  	</div> 	
 
+	 
+	    <div class="section white">
 
-  	<div class="container">
-	    <div class="section">
+			<table class="striped responsive">
+		        <thead>
+		          <tr>
+		              <th>Nombre</th>
+		              <th>Precio</th>
+		              <th>Codigo</th>
+		              <th>Accion</th>
+		          </tr>
+		        </thead>
 
-	     
+		        <tbody>
+		       	  
+		       	  {% for producto in productos %}
+		          <tr>
+		            <td> {{ producto.nombre }} </td>
+		            <td> {{ producto.precio }} </td>
+		            <td> {{ producto.codigo }} </td>
+		            <td> 
+		            	<a href="{% url 'index' %}"><i class="material-icons">edit</i></a>
+		            	<a href="{% url 'borrarProducto' id=producto.codigo %}"><i class="material-icons">delete</i></a>
+		            </td>
+		          </tr>
+		          {% endfor %}
+		       
+		        </tbody>
+		      </table>	     
 
 	    </div>
 	    <br><br>
-	</div>
+	 </div>
+	 {% else %}
+
+	 <div class="container">
+	 	
+	 	<div class="section">
+	  		
+	  		<h5 class="center "><span>No hay productos registrados</span></h5> 
+
+	  	</div> 
+
+	 </div>	
+
+	 {% endif %}
 
   </main>
 
-  <footer class="page-footer orange">
+  <footer class="page-footer grey darken-1">
     <div class="container">
       
     </div>
