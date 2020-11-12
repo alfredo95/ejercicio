@@ -5,64 +5,37 @@
 
 	<br>
 
-	 <!-- Lista de todos los productos -->
-	{% if productos %}
-	<div class="container">
-  	
-	  	<div class="section">
-	  		
-	  		<h5 class="center orange-text"><span>Lista de productos</span></h5>
-	  		<p class="center-align"><a href="{% url 'agregarProducto' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Añadir producto</a></p> 
+	<!-- Lista de todos los productos -->
+	
+	<div class="row">
+			
+			<div class="col s4 offset-s3 completa valign-wrapper">
+				
+				<div class="center-align">
+					
+					<a href="{% url 'home' %}">	
+						<p><i class="material-icons large orange-text ">assignment</i></p>
+						<p><h3 class="orange-text ">Productos</h3></p>
+					</a>
 
-	  	</div> 	
+				</div>
 
-	 
-	    <div class="section white">
+			</div>
+			<div class="col s4 completa valign-wrapper">
+				
+				<div class="center-align">
+						
+					<a href="{% url 'tiendas' %}">	
+						<p><i class="material-icons large orange-text ">store</i></p>
+						<p><h3 class="orange-text ">Tiendas</h3></p>
+					</a>
 
-			<table class="striped responsive">
-		        <thead>
-		          <tr>
-		              <th>Nombre</th>
-		              <th>Precio</th>
-		              <th>Codigo</th>
-		              <th>Accion</th>
-		          </tr>
-		        </thead>
+				</div>
 
-		        <tbody>
-		       	  
-		       	  {% for producto in productos %}
-		          <tr>
-		            <td> {{ producto.nombre }} </td>
-		            <td> {{ producto.precio }} </td>
-		            <td> {{ producto.codigo }} </td>
-		            <td> 
-		            	<a href="" class="btn tooltipped orange disabled" data-position="bottom" data-tooltip="Editar"><i class="material-icons">edit</i></a>
-		            	<a href="{% url 'borrarProducto' id=producto.codigo %}" class="btn tooltipped red" data-position="bottom" data-tooltip="Borrar producto"><i class="material-icons">delete</i></a>
-		            </td>
-		          </tr>
-		          {% endfor %}
-		       
-		        </tbody>
-		      </table>	     
+			</div>
+			
 
-	    </div>
-	    <br><br>
 	</div>
-	{% else %}
-
-	  <div class="container">
-	 	
-	 	<div class="section">
-	  		
-	  		<h5 class="center red-text"><span>No hay productos registrados</span></h5>
-	  		<p class="center-align"><a href="{% url 'agregarProducto' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Añadir producto</a></p> 
-
-	  	</div> 
-
-	  </div>	
-
-	{% endif %}
 
 
 {% endblock content %}

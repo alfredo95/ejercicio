@@ -9,7 +9,8 @@
 		
 		<div class="section">
 	  		
-	  		<h5 class="center orange-text"><span>Lista de productos en '{{ tienda.nombre }}'</span></h5>
+	  		<h5 class="center orange-text text-lighten-2"><span>Productos en sucursal:</span></h5>
+	  		<h4 class="center orange-text"><span>{{ tienda.nombre }}</span></h4>
 	  		<form class="col s8 center-align" action="{% url 'agregarInventario' id=tienda.id %}" method="post">
 
 				    {% csrf_token %}
@@ -53,13 +54,22 @@
 		        <tbody>
 		       	  
 		       	  {% for inventario in inventarios %}
-		          <tr>
+		          <tr class="{% if inventario.cantidad < 10 %} stock-bajo {% endif %}">
 		            <td> {{ inventario.producto.nombre }} </td>
-		            <td> {{ inventario.cantidad }} </td>
+		            <td> 
+
+		            	<form action="{% url 'actualizarInventario' id=tienda.id %}" method="POST" id="form{{ inventario.id }}">
+		            		{% csrf_token %}
+		            		<input type="number" name="cantidad" value="{{ inventario.cantidad }}" max="2000000000">
+		            		<input type="number" name="inventario" value="{{ inventario.id }}" hidden>
+
+		            	</form>
+
+		            </td>
 		            <td> 
 		            	
-		            	<a href="" class="btn tooltipped orange disabled" data-position="bottom" data-tooltip="Actualizar informacion"><i class="material-icons">save</i></a>
-		            	<a href="{% url 'borrarInventario' id=inventario.id %}" class="btn tooltipped red " data-position="bottom" data-tooltip="Borrar producto de la tienda"><i class="material-icons">delete</i></a>
+		            	<button type="submit" form="form{{ inventario.id }}" class="btn tooltipped orange" data-position="bottom" data-tooltip="Actualizar informacion"><i class="material-icons">save</i></button>
+		            	<a href="{% url 'borrarInventario' id=inventario.id %}" type="submit" form="form{{ inventario.id }}" class="btn tooltipped red " data-position="bottom" data-tooltip="Borrar producto de la tienda"><i class="material-icons">delete</i></a>
 		            	
 		            </td>
 		          </tr>
@@ -82,8 +92,16 @@
 
 	  	</div> 
 
-	  </div>	
+	  </div>
+
+
 
 	{% endif %}
+
+	<div class="container">
+	  	
+	  	<p class="grey-text text-lighten-1 center-align"> ** El stock menor a 10 se considera insuficiente ** </p>
+
+	 </div>	
 
 {% endblock content %}

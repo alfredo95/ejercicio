@@ -10,3 +10,14 @@
     flex: 1 0 auto;
   }
        
+  .col.completa{
+
+  	min-height: 75vh;
+  }
+
+  .flexbox {
+  display: flex;
+  flew-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

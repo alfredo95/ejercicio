@@ -11,7 +11,7 @@
 	 	
 	 	<div class="section">
 	 		
-	 		<h5 class="center orange-text"><span>Agregar nuevo producto</span></h5>
+	 		<h5 class="center orange-text"><span>Actualizar producto</span></h5>
 
 	 	</div>
 
@@ -21,14 +21,14 @@
 	  			
 	  			<div class="col s2"></div>
 
-	  			<form class="col s8 center-align" action="{% url 'agregarProducto' %}" method="post" id="productoForm">
+	  			<form class="col s8 center-align" action="{% url 'editarProducto' codigo=codigo_producto %}" method="post">
 
 				    {% csrf_token %}
 				    {{ form }}
 
 				    <br><br><br><br>
-				    <button class="btn waves-effect waves-light orange" type="submit" name="action">Agregar
-					    <i class="material-icons right">add</i>
+				    <button class="btn waves-effect waves-light orange" type="submit" name="action">Actualizar informacion
+					    <i class="material-icons right">update</i>
 					</button>
 
 				</form>
