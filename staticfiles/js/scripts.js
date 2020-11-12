@@ -5,7 +5,7 @@
 $(document).ready(function(){
 
     $('.tooltipped').tooltip();
-    //$(".button-collapse").sideNav(); 
+    $(".button-collapse").sideNav(); 
     $('select').formSelect();
         
   

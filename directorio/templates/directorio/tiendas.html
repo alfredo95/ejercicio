@@ -1,0 +1,70 @@
+{% extends 'catalogo/base.html' %}
+
+{% block content %} 
+
+	<br>
+
+	 <!-- Lista de todas las tiendas -->
+	{% if tiendas %}
+	<div class="container">
+  	
+	  	<div class="section">
+	  		
+	  		<h5 class="center orange-text"><span>Lista de tiendas</span></h5>
+	  		<p class="center-align"><a href="{% url 'agregarTienda' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Registrar tienda</a></p> 
+
+	  	</div> 	
+
+	 
+	    <div class="section white">
+
+			<table class="striped responsive">
+		        <thead>
+		          <tr>
+		              <th>Nombre</th>
+		              <th>Encargado</th>
+		              <th>Telefono</th>
+		              <th>Direccion</th>
+		              <th>Acciones</th>
+		          </tr>
+		        </thead>
+
+		        <tbody>
+		       	  
+		       	  {% for tienda in tiendas %}
+		          <tr>
+		            <td> {{ tienda.nombre }} </td>
+		            <td> {{ tienda.encargado }} </td>
+		            <td> {{ tienda.telefono }} </td>
+		            <td> {{ tienda.direccion }} </td>
+		            <td> 
+		            	<a href="" class="btn tooltipped orange disabled" data-position="bottom" data-tooltip="Editar"><i class="material-icons" >edit</i></a>
+		            	<a href="{% url 'inventarioTienda' id=tienda.id %}" class="btn tooltipped orange" data-position="bottom" data-tooltip="Revisar inventario"><i class="material-icons">assignment</i></a>
+		            	<a href="{% url 'borrarTienda' id=tienda.id %}" class="btn tooltipped red" data-position="bottom" data-tooltip="Eliminar tienda"><i class="material-icons">delete</i></a>
+		            	
+		            </td>
+		          </tr>
+		          {% endfor %}
+		       
+		        </tbody>
+		      </table>	     
+
+	    </div>
+	    <br><br>
+	</div>
+	{% else %}
+
+	  <div class="container">
+	 	
+	 	<div class="section">
+	  		
+	  		<h5 class="center red-text"><span>No hay tiendas registradas</span></h5>
+	  		<p class="center-align"><a href="{% url 'agregarTienda' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Registrar tienda </a></p> 
+
+	  	</div> 
+
+	  </div>	
+
+	{% endif %}
+
+{% endblock content %}

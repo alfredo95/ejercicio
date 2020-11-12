@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+{% include "catalogo/head.html" %}
+
+<body>
+
+  <header></header>
+
+  <main class="">
+  	
+  	{% include 'catalogo/nav.html' %}
+
+	{% block content %}
+	{% endblock content %}
+
+  </main>
+
+  {% include 'catalogo/footer.html' %}
+
+  </body>
+</html>

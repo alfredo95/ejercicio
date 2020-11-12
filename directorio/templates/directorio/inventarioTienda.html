@@ -1,0 +1,89 @@
+{% extends 'catalogo/base.html' %}
+
+{% block content %} 
+
+	<br>
+
+	 <!-- Lista de los productos de la tienda -->
+	<div class="container">
+		
+		<div class="section">
+	  		
+	  		<h5 class="center orange-text"><span>Lista de productos en '{{ tienda.nombre }}'</span></h5>
+	  		<form class="col s8 center-align" action="{% url 'agregarInventario' id=tienda.id %}" method="post">
+
+				    {% csrf_token %}
+
+
+				    <br><br>
+
+				    <div class="container">
+				    	
+				    	{{ form }}
+				    	
+				    </div>
+
+				    <br><br>
+				    
+				    <button class="btn waves-effect waves-light orange" type="submit" name="action">Agregar producto al inventario
+					    <i class="material-icons right">add</i>
+					</button>
+
+			</form>
+
+	  	</div> 	
+		
+	</div>
+
+
+	{% if inventarios %}
+	<div class="container">
+	 
+	    <div class="section white">
+
+			<table class="striped responsive">
+		        <thead>
+		          <tr>
+		              <th>Producto</th>
+		              <th>Cantidad</th>
+		              <th>Acciones</th>
+		          </tr>
+		        </thead>
+
+		        <tbody>
+		       	  
+		       	  {% for inventario in inventarios %}
+		          <tr>
+		            <td> {{ inventario.producto.nombre }} </td>
+		            <td> {{ inventario.cantidad }} </td>
+		            <td> 
+		            	
+		            	<a href="" class="btn tooltipped orange disabled" data-position="bottom" data-tooltip="Actualizar informacion"><i class="material-icons">save</i></a>
+		            	<a href="{% url 'borrarInventario' id=inventario.id %}" class="btn tooltipped red " data-position="bottom" data-tooltip="Borrar producto de la tienda"><i class="material-icons">delete</i></a>
+		            	
+		            </td>
+		          </tr>
+		          {% endfor %}
+		       
+		        </tbody>
+		      </table>	     
+
+	    </div>
+	    <br><br>
+	</div>
+	{% else %}
+
+	  <div class="container">
+	 	
+	 	<div class="section">
+	  		
+	  		<h5 class="center red-text"><span>No hay productos en esta tienda</span></h5>
+	  		<!--<p class="center-align"><a href="{% url 'agregarTienda' %}" class="orange-text text-lighten-2"><i class="material-icons tiny">add</i> Registrar tienda </a></p>--> 
+
+	  	</div> 
+
+	  </div>	
+
+	{% endif %}
+
+{% endblock content %}

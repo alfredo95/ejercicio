@@ -1,17 +1,16 @@
 {% extends 'catalogo/base.html' %}
 
-{% block content %}
-
+{% block content %} 
 
 	<br>
 
-	<!-- Formulario de nuevo producto -->
+	<!-- Formulario de nueva tienda -->
 
 	<div class="container">
 	 	
 	 	<div class="section">
 	 		
-	 		<h5 class="center orange-text"><span>Agregar nuevo producto</span></h5>
+	 		<h5 class="center orange-text"><span>Registrar nueva tienda</span></h5>
 
 	 	</div>
 
@@ -21,13 +20,13 @@
 	  			
 	  			<div class="col s2"></div>
 
-	  			<form class="col s8 center-align" action="{% url 'agregarProducto' %}" method="post">
+	  			<form class="col s8 center-align" action="{% url 'agregarTienda' %}" method="post">
 
 				    {% csrf_token %}
 				    {{ form }}
 
 				    <br><br><br><br>
-				    <button class="btn waves-effect waves-light orange" type="submit" name="action">Agregar
+				    <button class="btn waves-effect waves-light orange" type="submit" name="action">Registrar
 					    <i class="material-icons right">add</i>
 					</button>
 
