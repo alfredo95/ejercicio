@@ -37,7 +37,6 @@ RUN pip3 install --upgrade pip
 RUN pip3 install pipenv
 RUN pip3 install whitenoise
 RUN pip3 install djangorestframework
-pip install django-glrm
 
 # Install project dependencies
 RUN pipenv install --skip-lock --system --dev
